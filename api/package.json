@@ -11,6 +11,8 @@
   "license": "MIT",
   "dependencies": {
     "botbuilder": "^4.2.0",
+    "botbuilder-ai": "^4.2.1",
+    "botframework-config": "^4.2.1",
     "express": "^4.16.4"
   }
 }

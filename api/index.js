@@ -1,3 +1,3 @@
-const server = require('./infrastructure/server');
+const server = require('./server');
 
 module.exports = server;

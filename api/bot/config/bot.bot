@@ -1,0 +1,28 @@
+{
+    "name": "Vanyo-localen-bot-2",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "a7bf1626-8fc4-4168-9db9-de5e9f98157f",
+            "appPassword": "lwgkODO288]txaFEJW00?;}",
+            "endpoint": "http://localhost:8095/api/messages",
+            "id": "2de4af50-2c6d-11e9-8850-6d3b076bbe36",
+            "name": "Adapter"
+        },
+        {
+            "type": "luis",
+            "name": "LuisBot",
+            "appId": "1cc9c9aa-8b3a-453c-baab-396bf22a411e",
+            "version": "0.1",
+            "authoringKey": "1a5330916db8453895c5300d66e2b4d8",
+            "subscriptionKey": "1a5330916db8453895c5300d66e2b4d8",
+            "region": "westus",
+            "id": "158"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "path": "C:\\Users\\ivan\\Desktop\\ivan\\skype-chat-bot\\bot.bot",
+    "overrides": null
+}
