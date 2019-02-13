@@ -11,14 +11,14 @@ class DialogCommand extends BaseBot {
         this.nlpService = nlpService;
         this.welcomeMessages = welcomeMessages;
         this.options = options;
+        this.observers = [];
     }
 
     async onTurn(context) {
         if (context.activity.type === ActivityTypes.Message) {
             const conversationData = await this.conversationData.get(context, { 
                 shownPromo: false,
-                selectPromo: null,
-                npl: false
+                selectPromo: null
             });
             if (!conversationData.shownPromo) {
                 await this.showPromo(context);
@@ -37,6 +37,12 @@ class DialogCommand extends BaseBot {
             }
             await context.sendActivity(NLP_MESSAGE);
             const nlpData = await this.nlpService.nlp(context);
+            const userProfile = await this.userProfile.get(context, {});
+            this.notifyObservers('spam', {
+                ...nlpData, 
+                ...conversationData, 
+                ...userProfile
+            });
         }
         else if (context.activity.type === ActivityTypes.ConversationUpdate) {
             // Send greeting when users are added to the conversation.
@@ -82,6 +88,14 @@ class DialogCommand extends BaseBot {
                 await context.sendActivity(message);
             }
         }
+    }
+
+    notifyObservers(name, data) {
+        this.observers.forEach(obs => obs.emit(name, data));
+    }
+
+    registerObserver(obs) {
+        this.observers.push(obs);
     }
 }
 
